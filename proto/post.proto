@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package proto;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/himanshu-holmes/social-feed-system/proto";
+
+
+service PostService {
+// get post for specific user
+    rpc ListPostsByUser(ListPostsRequest) returns (ListPostsResponse);
+}
+
+
+message ListPostsRequest {
+  string user_id = 1;
+}
+
+
+message ListPostsResponse {
+  repeated Post posts = 1;
+}
+
+message Post {
+  string id = 1;
+  string content = 2;
+  google.protobuf.Timestamp timestamp = 3;
+  string author_id = 4;
+}
