@@ -1,30 +1,43 @@
+# Default port if not specified in environment
+GRPC_PORT ?= 6001
+
 # Paths to the main files 
 SERVICE = ./cmd/post_service/main.go
 
-# Run both services in the background
+# Default build output path
+OUTPUT_DIR = bin
+
+
+
+# Run the service in the background
 run:
 	@echo "Starting Service ..."
 	go run $(SERVICE) > posts.log 2>&1 &
 
-# Run both in foreground (useful for debugging)
+# Run the service in the foreground
 run-foreground:
-	@echo "Running Service  in foreground..."
+	@echo "Running Service in foreground..."
 	go run $(SERVICE)
 
 # Stop all running Go services
 stop:
-	@echo "Killing Go services..."
-	@pkill -f $(SERVICE) || true
-	
+	@echo "Killing service on port ${GRPC_PORT}..."
+	@lsof -ti :${GRPC_PORT} | xargs kill -9 || echo "No service running on port ${GRPC_PORT}"
 
-# Build binaries
+# Build binaries for the current OS
 build:
-	go build -o bin/service $(SERVICE)
+	@echo "Building binary for current OS..."
+	go build -o $(OUTPUT_DIR)/service $(SERVICE)
 
+# Build binaries for specific OS and architecture
+build-cross:
+	@echo "Building binaries for different platforms..."
+	GOOS=linux   GOARCH=amd64 go build -o $(OUTPUT_DIR)/service-linux-amd64 $(SERVICE)
+	GOOS=windows GOARCH=amd64 go build -o $(OUTPUT_DIR)/service-windows-amd64.exe $(SERVICE)
+	GOOS=darwin  GOARCH=amd64 go build -o $(OUTPUT_DIR)/service-darwin-amd64 $(SERVICE)
+	GOOS=darwin  GOARCH=arm64 go build -o $(OUTPUT_DIR)/service-darwin-arm64 $(SERVICE)
 
 # Clean binaries
 clean:
-	rm -rf bin/
-
-
-
+	@echo "Cleaning binaries..."
+	rm -rf $(OUTPUT_DIR)/
