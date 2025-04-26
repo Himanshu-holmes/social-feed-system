@@ -7,7 +7,7 @@ import (
 	"os/signal"
 
 
-	"github.com/himanshu-holmes/social-feed-system/cmd/post_service/server"
+	"github.com/himanshu-holmes/social-feed-system/cmd/timeline_service/server"
 )
 
 func main() {

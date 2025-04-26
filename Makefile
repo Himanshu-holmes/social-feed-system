@@ -2,13 +2,21 @@
 GRPC_PORT ?= 6001
 
 # Paths to the main files 
-SERVICE = ./cmd/post_service/main.go
+SERVICE = ./cmd/timeline_service/main.go
 
 # Default build output path
 OUTPUT_DIR = bin
 
 
 
+#proto compilation
+pcompile:
+	 protoc --go_out=. --go_opt=paths=source_relative     --go-grpc_out=. --go-grpc_opt=paths=source_relative     proto/timeline.proto
+
+
+# run graphql server
+gql:
+	go run ./server.go
 # Run the service in the background
 run:
 	@echo "Starting Service ..."

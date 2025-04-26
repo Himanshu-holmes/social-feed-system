@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        v6.30.2
-// source: proto/post.proto
+// source: proto/timeline.proto
 
 package proto
 
@@ -31,7 +31,7 @@ type ListPostsRequest struct {
 
 func (x *ListPostsRequest) Reset() {
 	*x = ListPostsRequest{}
-	mi := &file_proto_post_proto_msgTypes[0]
+	mi := &file_proto_timeline_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -43,7 +43,7 @@ func (x *ListPostsRequest) String() string {
 func (*ListPostsRequest) ProtoMessage() {}
 
 func (x *ListPostsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_post_proto_msgTypes[0]
+	mi := &file_proto_timeline_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -56,7 +56,7 @@ func (x *ListPostsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListPostsRequest.ProtoReflect.Descriptor instead.
 func (*ListPostsRequest) Descriptor() ([]byte, []int) {
-	return file_proto_post_proto_rawDescGZIP(), []int{0}
+	return file_proto_timeline_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *ListPostsRequest) GetUserId() string {
@@ -75,7 +75,7 @@ type ListPostsResponse struct {
 
 func (x *ListPostsResponse) Reset() {
 	*x = ListPostsResponse{}
-	mi := &file_proto_post_proto_msgTypes[1]
+	mi := &file_proto_timeline_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -87,7 +87,7 @@ func (x *ListPostsResponse) String() string {
 func (*ListPostsResponse) ProtoMessage() {}
 
 func (x *ListPostsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_post_proto_msgTypes[1]
+	mi := &file_proto_timeline_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -100,7 +100,7 @@ func (x *ListPostsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListPostsResponse.ProtoReflect.Descriptor instead.
 func (*ListPostsResponse) Descriptor() ([]byte, []int) {
-	return file_proto_post_proto_rawDescGZIP(), []int{1}
+	return file_proto_timeline_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *ListPostsResponse) GetPosts() []*Post {
@@ -122,7 +122,7 @@ type Post struct {
 
 func (x *Post) Reset() {
 	*x = Post{}
-	mi := &file_proto_post_proto_msgTypes[2]
+	mi := &file_proto_timeline_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -134,7 +134,7 @@ func (x *Post) String() string {
 func (*Post) ProtoMessage() {}
 
 func (x *Post) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_post_proto_msgTypes[2]
+	mi := &file_proto_timeline_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -147,7 +147,7 @@ func (x *Post) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Post.ProtoReflect.Descriptor instead.
 func (*Post) Descriptor() ([]byte, []int) {
-	return file_proto_post_proto_rawDescGZIP(), []int{2}
+	return file_proto_timeline_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *Post) GetId() string {
@@ -178,11 +178,11 @@ func (x *Post) GetAuthorId() string {
 	return ""
 }
 
-var File_proto_post_proto protoreflect.FileDescriptor
+var File_proto_timeline_proto protoreflect.FileDescriptor
 
-const file_proto_post_proto_rawDesc = "" +
+const file_proto_timeline_proto_rawDesc = "" +
 	"\n" +
-	"\x10proto/post.proto\x12\x05proto\x1a\x1fgoogle/protobuf/timestamp.proto\"+\n" +
+	"\x14proto/timeline.proto\x12\x05proto\x1a\x1fgoogle/protobuf/timestamp.proto\"+\n" +
 	"\x10ListPostsRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\"6\n" +
 	"\x11ListPostsResponse\x12!\n" +
@@ -191,34 +191,34 @@ const file_proto_post_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x18\n" +
 	"\acontent\x18\x02 \x01(\tR\acontent\x128\n" +
 	"\ttimestamp\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\ttimestamp\x12\x1b\n" +
-	"\tauthor_id\x18\x04 \x01(\tR\bauthorId2S\n" +
-	"\vPostService\x12D\n" +
+	"\tauthor_id\x18\x04 \x01(\tR\bauthorId2W\n" +
+	"\x0fTimelineService\x12D\n" +
 	"\x0fListPostsByUser\x12\x17.proto.ListPostsRequest\x1a\x18.proto.ListPostsResponseB5Z3github.com/himanshu-holmes/social-feed-system/protob\x06proto3"
 
 var (
-	file_proto_post_proto_rawDescOnce sync.Once
-	file_proto_post_proto_rawDescData []byte
+	file_proto_timeline_proto_rawDescOnce sync.Once
+	file_proto_timeline_proto_rawDescData []byte
 )
 
-func file_proto_post_proto_rawDescGZIP() []byte {
-	file_proto_post_proto_rawDescOnce.Do(func() {
-		file_proto_post_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_proto_post_proto_rawDesc), len(file_proto_post_proto_rawDesc)))
+func file_proto_timeline_proto_rawDescGZIP() []byte {
+	file_proto_timeline_proto_rawDescOnce.Do(func() {
+		file_proto_timeline_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_proto_timeline_proto_rawDesc), len(file_proto_timeline_proto_rawDesc)))
 	})
-	return file_proto_post_proto_rawDescData
+	return file_proto_timeline_proto_rawDescData
 }
 
-var file_proto_post_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
-var file_proto_post_proto_goTypes = []any{
+var file_proto_timeline_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
+var file_proto_timeline_proto_goTypes = []any{
 	(*ListPostsRequest)(nil),      // 0: proto.ListPostsRequest
 	(*ListPostsResponse)(nil),     // 1: proto.ListPostsResponse
 	(*Post)(nil),                  // 2: proto.Post
 	(*timestamppb.Timestamp)(nil), // 3: google.protobuf.Timestamp
 }
-var file_proto_post_proto_depIdxs = []int32{
+var file_proto_timeline_proto_depIdxs = []int32{
 	2, // 0: proto.ListPostsResponse.posts:type_name -> proto.Post
 	3, // 1: proto.Post.timestamp:type_name -> google.protobuf.Timestamp
-	0, // 2: proto.PostService.ListPostsByUser:input_type -> proto.ListPostsRequest
-	1, // 3: proto.PostService.ListPostsByUser:output_type -> proto.ListPostsResponse
+	0, // 2: proto.TimelineService.ListPostsByUser:input_type -> proto.ListPostsRequest
+	1, // 3: proto.TimelineService.ListPostsByUser:output_type -> proto.ListPostsResponse
 	3, // [3:4] is the sub-list for method output_type
 	2, // [2:3] is the sub-list for method input_type
 	2, // [2:2] is the sub-list for extension type_name
@@ -226,26 +226,26 @@ var file_proto_post_proto_depIdxs = []int32{
 	0, // [0:2] is the sub-list for field type_name
 }
 
-func init() { file_proto_post_proto_init() }
-func file_proto_post_proto_init() {
-	if File_proto_post_proto != nil {
+func init() { file_proto_timeline_proto_init() }
+func file_proto_timeline_proto_init() {
+	if File_proto_timeline_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_post_proto_rawDesc), len(file_proto_post_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_timeline_proto_rawDesc), len(file_proto_timeline_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   3,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_proto_post_proto_goTypes,
-		DependencyIndexes: file_proto_post_proto_depIdxs,
-		MessageInfos:      file_proto_post_proto_msgTypes,
+		GoTypes:           file_proto_timeline_proto_goTypes,
+		DependencyIndexes: file_proto_timeline_proto_depIdxs,
+		MessageInfos:      file_proto_timeline_proto_msgTypes,
 	}.Build()
-	File_proto_post_proto = out.File
-	file_proto_post_proto_goTypes = nil
-	file_proto_post_proto_depIdxs = nil
+	File_proto_timeline_proto = out.File
+	file_proto_timeline_proto_goTypes = nil
+	file_proto_timeline_proto_depIdxs = nil
 }

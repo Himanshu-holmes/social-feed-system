@@ -15,7 +15,7 @@ import (
 
 const defaultPort = "6001"
 type Resolver struct{
-	PostClient proto.PostServiceClient
+	PostClient proto.TimelineServiceClient
 }
 func  NewResolver()*Resolver{
 	port := os.Getenv("GRPC_PORT")
@@ -27,7 +27,7 @@ func  NewResolver()*Resolver{
 		fmt.Println("Error while connecting to post service",err)
 		panic(err)
 	}
-	postClient := proto.NewPostServiceClient(postConn)
+	postClient := proto.NewTimelineServiceClient(postConn)
 	return &Resolver{
 		PostClient: postClient,
 	}

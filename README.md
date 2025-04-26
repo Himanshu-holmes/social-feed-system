@@ -2,6 +2,20 @@
 
 A toy social feed system built with Go, gRPC, GraphQL, and in-memory data storage.
 
+## Running the Services
+
+### 1. gRPC Server
+
+```bash
+make run
+```
+
+### 2. GraphQL Server
+
+```bash
+make gql
+```
+
 ## 🧠 Design Decisions
 
 ### 1. In-Memory Store
@@ -37,6 +51,10 @@ go test ./cmd/post_service/server
 ```
 
 ## Makefile
+### Run graphql server
+```bash
+make gql
+```
 ### Run service in foreground
 ```bash
 make run-foreground

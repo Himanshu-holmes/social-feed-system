@@ -24,7 +24,7 @@ const (
 
 type Server struct {
 	store *data.InMemoryStore
-	postV1.UnimplementedPostServiceServer
+	postV1.UnimplementedTimelineServiceServer
 }
 
 func NewServer() *Server {
@@ -44,7 +44,7 @@ func (s *Server) Run() {
 		log.Fatalf("failed to listen : %v", err)
 	}
 	grpcServer := grpc.NewServer()
-	postV1.RegisterPostServiceServer(grpcServer, s)
+	postV1.RegisterTimelineServiceServer(grpcServer, s)
 	reflection.Register(grpcServer)
 	log.Printf("Starting PostService server on port %s", port)
 	go func() {
